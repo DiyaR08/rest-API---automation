@@ -33,7 +33,18 @@ public class GetCallBDD {
 			header("Content-Length", equalTo("4551"));
 			
 		
-		
+
+		given()
+		.when()
+			.get("http://ergast.com/api/f1/2017/circuits.json")
+		.then()
+			.assertThat()
+			.statusCode(200)
+			.and()
+			.body("MRData.CircuitTable.Circuits.circuitId", hasSize(20))
+		.and()
+			.header("Content-Length", equalTo("4551"));
+
 		
 		
 	}
