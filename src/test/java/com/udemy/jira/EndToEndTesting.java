@@ -1,5 +1,7 @@
 package com.udemy.jira;
 
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -22,6 +24,7 @@ public class EndToEndTesting {
 	String sessionValue = HelperMethod.getSessionValue();
 	String issueId = HelperMethod.createIssue();
 	
+	@BeforeMethod
 	@BeforeTest
 	public void setUp() throws IOException {
 		fis = new FileInputStream(System.getProperty("user.dir")+"/src/test/resources/config.properties");

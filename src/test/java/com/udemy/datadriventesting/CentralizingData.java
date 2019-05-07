@@ -1,11 +1,14 @@
 package com.udemy.datadriventesting;
 
+import org.testng.annotations.Test;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -21,18 +24,21 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class CentralizingData {
 	Properties prop = new Properties();
+	private static Logger log = LogManager.getLogger(CentralizingData.class.getName());
 	
 	@BeforeTest
 	public void getData() throws IOException {
 		 
 		//File f = new File(System.getProperty("/Users/veena/Documents/workspace_git/rest-API---automation/src/test/resources/config.properties"));
-		FileInputStream fis = new FileInputStream("/Users/veena/Documents/workspace_git/rest-API---automation/src/test/resources/config.properties");
+		FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"/src/test/resources/properties/config.properties");
 		prop.load(fis);
+		
 	}
 	
 	@Test
 	public void grabResponse() {
 		
+		log.info("Host information"+ prop.getProperty("HOST"));
 		RestAssured.baseURI = prop.getProperty("HOST");
 		
 		Response res = given().
@@ -52,19 +58,19 @@ public class CentralizingData {
 		contentType("application/json;charset=UTF-8").and().
 		body("status",equalTo("OK")).
 		extract().response();
-		System.out.println(res);
+		log.info(res);
 		
 		//Response is in raw form,  extract in variable res and convert to string type 
 		
 		String responseString = res.asString(); 
-		System.out.println(responseString);
+		log.info(responseString);
 		
 		
 		//Task 2: Grab the place ID from the response
 		
 		JsonPath js = new JsonPath(responseString);//Convert string to Jsonpath to grab the id in json format
 		String placeID= js.get("place_id");
-		System.out.println("Place ID: "+ placeID);
+		log.info("Place ID: "+ placeID);
 		
 		//Task 3: Place this place Id in delete request
 		

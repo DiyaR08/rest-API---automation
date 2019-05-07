@@ -1,5 +1,7 @@
 package com.qa.rest.test;
 
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import io.restassured.RestAssured;
 
 import io.restassured.http.ContentType;
@@ -42,13 +44,13 @@ public class ValidatingGetResponse {
 				
 		Response response = RestAssured.get("/api/f1/2017/circuits.json");
 		
-		Assert.assertEquals(response.getStatusCode(), 200);
+		AssertJUnit.assertEquals(response.getStatusCode(), 200);
 		
-		Assert.assertEquals(response.header("content-type"), "application/json; charset=utf-8");
+		AssertJUnit.assertEquals(response.header("content-type"), "application/json; charset=utf-8");
 		
-		Assert.assertEquals(response.jsonPath().get("MRData.CircuitTable.Circuits[0].circuitName"), "Albert Park Grand Prix Circuit");
+		AssertJUnit.assertEquals(response.jsonPath().get("MRData.CircuitTable.Circuits[0].circuitName"), "Albert Park Grand Prix Circuit");
 		
-		Assert.assertEquals(response.header("server"), "Apache/2.2.15 (CentOS)");
+		AssertJUnit.assertEquals(response.header("server"), "Apache/2.2.15 (CentOS)");
 		
 		
 		

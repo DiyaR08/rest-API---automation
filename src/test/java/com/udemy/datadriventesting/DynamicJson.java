@@ -1,5 +1,6 @@
 package com.udemy.datadriventesting;
 
+import org.testng.annotations.Test;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -25,7 +26,7 @@ public class DynamicJson {
 	
 	@BeforeTest
 	public void getData() throws IOException {
-		FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"/src/test/resources/config.properties");
+		FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"/src/test/resources/properties/config.properties");
 		System.out.println(System.getProperty("user.dir"));
 		prop.load(fis);
 	}

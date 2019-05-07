@@ -1,9 +1,10 @@
 package com.udemy.datadriventesting;
 
+import org.testng.annotations.Test;
+
 import static io.restassured.RestAssured.given;
 
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
 
 import com.udemy.files.Payload;
 import com.udemy.files.Resources;

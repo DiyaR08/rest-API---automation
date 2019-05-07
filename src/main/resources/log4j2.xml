@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn">
+	 <Properties> 
+	 <Property name="basePath">/Users/veena/Documents/workspace_git/automation/src/test/resources/logs</Property> 
+	</Properties>
+
+	<Appenders>
+		<RollingFile name="file" fileName="${basePath}/Mylog.log" filePattern="${basePath}/app-info-%d{yyyy-MM-dd}.log"> 
+			<PatternLayout
+				pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n" />
+				<SizeBasedTriggeringPolicy size ="500"/>
+		</RollingFile>
+
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n" />
+		</Console>
+	</Appenders>
+	
+	<Loggers>
+		
+		<Logger name="com.qa.rest.test.CentralizingData" level="trace" additivity="false">
+			<!-- <appender-ref ref="console"/>  -->
+			<appender-ref ref="file"/>
+		</Logger>
+		
+		
+		<Root level="error" additivity="false">
+			<appender-ref ref="file" />
+		</Root>
+	</Loggers>
+
+</Configuration>

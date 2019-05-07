@@ -1,5 +1,7 @@
 package com.qa.rest.test;
 
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -78,7 +80,7 @@ public class AddDeletePlace {
 			.body(deleteBody)
 			.post("/maps/api/place/delete/json");
 		
-		Assert.assertEquals(deleteResponse.statusCode(), 200);
+		AssertJUnit.assertEquals(deleteResponse.statusCode(), 200);
 		System.out.print(deleteResponse.getBody().asString());
 
 		
