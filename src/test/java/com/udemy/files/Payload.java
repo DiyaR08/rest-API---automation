@@ -1,14 +1,5 @@
 package com.udemy.files;
 
-
-
-import org.testng.annotations.Test;
-
-
-import com.udemy.jira.HelperMethod;
-import com.udemy.jira.Resources;
-
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
 public class Payload {
@@ -39,7 +30,7 @@ public class Payload {
 	
 	public static String getPlaceId() {
 		String placeID = res.jsonPath().get("\"place_id\"");
-		return null;
+		return placeID;
 		
 	}
 	public static String deletePlace() {

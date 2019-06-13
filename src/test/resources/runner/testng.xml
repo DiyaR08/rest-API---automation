@@ -7,9 +7,9 @@
 		</classes>
 	</test>
 	
-	<test name="End To End Test">
+<!-- 	<test name="End To End Test">
 		<classes>
 			<class name="com.udemy.datadriventesting.DynamicJson" />
-		</classes>
+		</classes> -->
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
